@@ -1,0 +1,105 @@
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+body .main-content {
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 20px;
+  height: 75%;
+  width: 90%;
+  display: grid;
+  grid-template-areas: "summary chart" "money money";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+}
+body .main-content .summary {
+  background-color: #f00;
+  grid-area: summary;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  height: 150px; /* Adjust height as needed */
+}
+body .main-content .summary .balance {
+  font-size: 2em;
+  position: absolute;
+  top: 10%;
+}
+body .main-content .summary .income, body .main-content .summary .expenses {
+  font-size: 1.5em;
+}
+body .main-content .chart {
+  background-color: #00f;
+  grid-area: chart;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust height as needed */
+  padding: 10px;
+  border-radius: 50px;
+}
+body .main-content .chart canvas {
+  width: 100%;
+  max-width: 100px; /* Adjust size as needed */
+  height: auto;
+}
+body .main-content .money-content {
+  grid-area: money;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+body .main-content .money-content .input-section, body .main-content .money-content .table-section {
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 20px;
+}
+body .main-content .money-content .input-section {
+  display: flex;
+  align-items: center;
+}
+body .main-content .money-content .input-section select, body .main-content .money-content .input-section input, body .main-content .money-content .input-section button {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+body .main-content .money-content .input-section button {
+  background-color: #00f;
+  color: #fff;
+  cursor: pointer;
+}
+body .main-content .money-content .input-section button:hover {
+  background-color: #0000cc;
+}
+body .main-content .money-content .table-section {
+  overflow: auto;
+  flex-grow: 1;
+}
+body .main-content .money-content .table-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+body .main-content .money-content .table-section table th, body .main-content .money-content .table-section table td {
+  padding: 10px;
+  border: 2px solid #444;
+}
+body .main-content .money-content .table-section table th {
+  background-color: #333;
+  color: #fff;
+}
+body .main-content .money-content .table-section table tr:nth-child(even) {
+  background-color: #666;
+}
+body .main-content .money-content .table-section table tr:nth-child(odd) {
+  background-color: #555;
+}/*# sourceMappingURL=style.css.map */

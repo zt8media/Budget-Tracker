@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>src="script.js"</script>
+  <div class="main-content">
+    <div class="summary">
+      <div class="income">Income: $<span id="income">0</span></div>
+      <div class="balance">Balance: $<span id="balance">0</span></div>
+      <div class="expenses">Expenses: $<span id="expenses">0</span></div>
+    </div>
+    <div class="chart">
+      <canvas id="income-expense-chart"></canvas>
+    </div>
+    <div class="money-content">
+      <div class="input-section">
+        <select id="transaction-type">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <input type="number" id="transaction-amount" placeholder="Amount" required>
+        <input type="text" id="transaction-label" placeholder="Label" required>
+        <input type="date" id="transaction-date" required>
+        <button id="submit-transaction">Submit</button>
+      </div>
+      <div class="table-section">
+        <h2>Transactions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Label</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-table-body">
+            <!-- Transactions will be added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

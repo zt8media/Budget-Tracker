@@ -1,0 +1,138 @@
+$background-black: #000;
+$background-white: #fff;
+$background-red: #f00;
+$background-blue: #00f;
+$border-radius: 50px;
+$padding: 20px;
+$table-border: 2px solid #444;
+$table-header-bg: #333;
+$table-row-bg: #666;
+$table-row-alt-bg: #555;
+$button-bg: #00f;
+$button-bg-hover: darken($button-bg, 10%);
+
+body {
+  background-color: $background-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+
+  .main-content {
+    background-color: $background-white;
+    border-radius: $border-radius;
+    padding: $padding;
+    height: 75%;
+    width: 90%;
+    display: grid;
+    grid-template-areas: 
+      "summary chart"
+      "money money";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    gap: $padding;
+
+    .summary {
+      background-color: $background-red;
+      grid-area: summary;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      height: 150px; /* Adjust height as needed */
+
+      .balance {
+        font-size: 2em;
+        position: absolute;
+        top: 10%;
+      }
+
+      .income, .expenses {
+        font-size: 1.5em;
+      }
+    }
+
+    .chart {
+      background-color: $background-blue;
+      grid-area: chart;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px; /* Adjust height as needed */
+      padding: 10px;
+      border-radius: $border-radius;
+
+      canvas {
+        width: 100%;
+        max-width: 100px; /* Adjust size as needed */
+        height: auto;
+      }
+    }
+
+    .money-content {
+      grid-area: money;
+      background-color: $background-black;
+      display: flex;
+      flex-direction: column;
+      gap: $padding;
+      flex-grow: 1;
+
+      .input-section, .table-section {
+        background-color: $background-white;
+        border-radius: $border-radius;
+        padding: $padding;
+      }
+
+      .input-section {
+        display: flex;
+        align-items: center;
+
+        select, input, button {
+          margin-right: 10px;
+          padding: 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+
+        button {
+          background-color: $button-bg;
+          color: #fff;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $button-bg-hover;
+          }
+        }
+      }
+
+      .table-section {
+        overflow: auto;
+        flex-grow: 1;
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+          th, td {
+            padding: 10px;
+            border: $table-border;
+          }
+
+          th {
+            background-color: $table-header-bg;
+            color: #fff;
+          }
+
+          tr:nth-child(even) {
+            background-color: $table-row-bg;
+          }
+
+          tr:nth-child(odd) {
+            background-color: $table-row-alt-bg;
+          }
+        }
+      }
+    }
+  }
+}
