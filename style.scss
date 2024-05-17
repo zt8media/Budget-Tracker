@@ -1,147 +1,276 @@
 $background-black: #000;
-$background-white: #fff;
 $background-red: #f00;
 $background-blue: #00f;
 $border-radius: 50px;
 $padding: 20px;
-$table-border: 2px solid #fb0000;
-$table-header-bg: #333;
+$table-border: none;
+$table-header-bg: purple;
 $table-row-bg: #666;
 $table-row-alt-bg: #555;
-$button-bg: #00f;
+$button-bg: rgb(132, 37, 145);
 $button-bg-hover: darken($button-bg, 10%);
- @mixin center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
+$max-width: 2560px;
+$error-color: #f00;
+$font-family: 'Oswald', sans-serif;
+$table-line-color: rgba(211, 211, 211, 0.3); // Light grey color for table lines
+
+$income-color: rgb(66, 245, 87); // Green
+$expense-color: rgb(247, 67, 67); // Red
+$balance-color: rgb(247, 241, 67); // Yellow
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
+  font-family: $font-family;
   background-color: $background-black;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   .main-content {
-    background-color: $background-white;
-    border-radius: $border-radius;
-    padding: $padding - 10 ;
+    background: linear-gradient(to top right, #a0a4b9, #eba243);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius - 15;
+    padding: $padding;
     height: 80%;
     width: 90%;
     display: grid;
     grid-template-areas: 
-      "summary chart chart chart"
-      "money money money money";
-    grid-template-rows: auto 1fr;
-    grid-template-columns: .7fr auto;
+      "left-section right-section";
+    grid-template-columns: 1fr 2fr;
     gap: $padding;
-    
-    .summary {
-      background-color: $background-red;
-      grid-area: summary;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      position: relative;
-      height: 100%; /* Adjust height as needed */
+    overflow-y: auto;
+
+    @media screen and (max-width: 768px) {
+      grid-template-areas: 
+        "left-section"
+        "right-section";
+      grid-template-columns: 1fr;
+      height: 95%;
       width: 100%;
-      border-radius: $border-radius;
-
-      .balance {
-        font-size: 2em;
-        position: absolute;
-        top: 10%;
-      }
-
-      .income, .expenses {
-        font-size: 1.5em;
-      }
+      gap: 10px;
     }
 
-    .chart {
-      background-color: $background-blue;
-      grid-area: chart;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 150px;
-      width: 95%; /* Adjust height as needed */
+    @media screen and (max-width: 480px) {
+      grid-template-areas: 
+        "left-section"
+        "right-section";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      height: 95%;
+      width: 100%;
       padding: 10px;
-      border-radius: $border-radius;
-
-      canvas {
-        width: 100%;
-        max-width: 100px; /* Adjust size as needed */
-        height: auto;
-      }
+      gap: 10px;
     }
 
-    .money-content {
-      grid-area: money;
-    //   background-color: yellowgreen;
+    .left-section {
       display: flex;
       flex-direction: column;
       gap: $padding;
-      flex-grow: 1;
+      grid-area: left-section;
+      height: 100%;
 
-      .input-section, .table-section {
-        background-color: $background-white;
-        // border-radius: $border-radius;
-        // padding: $padding;
-
-      }
-      
-      .input-section {
+      .summary {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        @include center;
-        padding: $padding - 10;
+        height: 50%;
+        border-radius: $border-radius;
 
-        select, input, button {
-          margin-right: 10px;
-          padding: 10px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
+        .income, .balance, .expenses {
+          font-size: 1.5em;
+          margin: 10px 0;
+          color: $background-black;
         }
 
-        button {
-          background-color: $button-bg;
-          color: #fff;
-          cursor: pointer;
+        .balance {
+          font-size: 2em;
+          color: $balance-color;
+          font-weight: bold;
+        }
 
-          &:hover {
-            background-color: $button-bg-hover;
+        .income {
+          color: $income-color;
+        }
+
+        .expenses {
+          color: $expense-color;
+        }
+      }
+
+      .chart {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        border-radius: $border-radius;
+        padding: 10px;
+
+        canvas {
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      gap: $padding;
+      grid-area: right-section;
+      height: 100%;
+
+      @media screen and (max-width: 768px) {
+        .input-section, .table-section {
+          height: auto;
+        }
+      }
+
+      .input-section {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: $padding;
+        border-radius: $border-radius;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 0 1 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $padding;
+
+        .left-column, .right-column {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          select, input, button {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.875rem;
+          }
+
+          #submit-transaction {
+            background-color: $button-bg;
+            color: $background-black;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $button-bg-hover;
+            }
+          }
+
+          #clear-table {
+            background-color: $income-color;
+            color: $background-black;
+            cursor: pointer;
+
+            &:hover {
+              background-color: darken($income-color, 10%);
+            }
+          }
+
+          .error-message {
+            color: $error-color;
+            font-size: 0.875rem;
+            visibility: hidden;
+          }
+        }
+
+        @media screen and (max-width: 480px) {
+          grid-template-columns: 1fr;
+          height: auto;
+
+          .left-column, .right-column {
+            padding: 0;
           }
         }
       }
 
       .table-section {
-        overflow: auto;
-        flex-grow: .8;
-      
-        table {
-          width: 100%;
-          border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: $padding;
+        border-radius: $border-radius - 10 ;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 1 1 auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
-          th, td {
-            padding: 10px;
-            border: $table-border;
+        @media screen and (max-width: 480px) {
+          max-height: 200px;
+          padding: 10px;
+        }
+
+        .table-container {
+          max-height: 250px;
+          overflow-y: auto;
+          border: none;
+
+          @media screen and (max-width: 480px) {
+            max-height: 150px;
           }
 
-          th {
-            background-color: purple;
-            color: #fff;
-            // border-radius: $border-radius;
-           padding: 0;
-          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
 
-          tr:nth-child(even) {
-            background-color: $table-row-bg;
-          }
+            th, td {
+              padding: 10px;
+              border: none;
+              background: transparent;
+              color: $background-black;
+              text-align: center;
+            }
 
-          tr:nth-child(odd) {
-            background-color: $table-row-alt-bg;
+            th {
+              color: $background-black;
+              position: sticky;
+              top: 0;
+              z-index: 1;
+              background-color: $background-white;
+              border-bottom: 1px solid $table-line-color;
+            }
+
+            tr {
+              border-bottom: 1px solid $table-line-color;
+            }
+
+            td {
+              text-align: center;
+            }
+
+            .delete-icon {
+              cursor: pointer;
+              color: $error-color;
+            }
+
+            .income-row td {
+              color: $income-color;
+            }
+
+            .expense-row td {
+              color: $expense-color;
+            }
+
+            .hidden-row {
+              visibility: hidden;
+            }
           }
         }
       }
