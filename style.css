@@ -1,6 +1,6 @@
 body {
   font-family: "Oswald", sans-serif;
-  background-color: #000;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@ body {
   overflow-y: hidden;
 }
 body .main-content {
-  background: linear-gradient(to top right, #814577, #e1e1e1);
+  background: linear-gradient(to top right, #e9eaeb, #671d62);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   border-radius: 35px;
@@ -65,7 +65,6 @@ body .main-content .left-section .summary {
 body .main-content .left-section .summary .income, body .main-content .left-section .summary .balance, body .main-content .left-section .summary .expenses {
   font-size: 1.5em;
   margin: 10px 0;
-  color: #000;
 }
 body .main-content .left-section .summary .balance {
   font-size: 2em;
@@ -124,24 +123,28 @@ body .main-content .right-section .input-section .left-column, body .main-conten
   gap: 10px;
 }
 body .main-content .right-section .input-section .left-column select, body .main-content .right-section .input-section .left-column input, body .main-content .right-section .input-section .left-column button, body .main-content .right-section .input-section .right-column select, body .main-content .right-section .input-section .right-column input, body .main-content .right-section .input-section .right-column button {
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
-  border: 1px solid rgb(247, 247, 247);
+  border: 1px solid #ccc;
   font-size: 0.875rem;
-  background-color: transparent;
 }
-body .main-content .right-section .input-section .left-column button, body .main-content .right-section .input-section .right-column button {
+body .main-content .right-section .input-section .left-column #submit-transaction, body .main-content .right-section .input-section .right-column #submit-transaction {
   background-color: rgb(132, 37, 145);
-  color: #000;
   cursor: pointer;
-  border: 1px solid rgb(247, 247, 247);
 }
-body .main-content .right-section .input-section .left-column button:hover, body .main-content .right-section .input-section .right-column button:hover {
+body .main-content .right-section .input-section .left-column #submit-transaction:hover, body .main-content .right-section .input-section .right-column #submit-transaction:hover {
   background-color: #5f1b68;
+}
+body .main-content .right-section .input-section .left-column #clear-table, body .main-content .right-section .input-section .right-column #clear-table {
+  background-color: rgb(236, 67, 219);
+  cursor: pointer;
+}
+body .main-content .right-section .input-section .left-column #clear-table:hover, body .main-content .right-section .input-section .right-column #clear-table:hover {
+  background-color: #e517d0;
 }
 body .main-content .right-section .input-section .left-column .error-message, body .main-content .right-section .input-section .right-column .error-message {
   color: #f00;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   visibility: hidden;
 }
 @media screen and (max-width: 480px) {
@@ -189,11 +192,9 @@ body .main-content .right-section .table-section .table-container table th, body
   padding: 10px;
   border: none;
   background: transparent;
-  color: #000;
   text-align: center;
 }
 body .main-content .right-section .table-section .table-container table th {
-  color: #000;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -214,4 +215,7 @@ body .main-content .right-section .table-section .table-container table .income-
 }
 body .main-content .right-section .table-section .table-container table .expense-row td {
   color: rgb(132, 37, 145);
+}
+body .main-content .right-section .table-section .table-container table .hidden-row {
+  visibility: hidden;
 }/*# sourceMappingURL=style.css.map */

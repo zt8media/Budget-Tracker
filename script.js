@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
             label: 'Budget Data',
             data: [0, 0, 0],
             backgroundColor: [
-                'rgb(236, 67, 219)', // Green
-                'rgb(132, 37, 145)', // Red
-                'rgb(247, 247, 247)'  // Yellow
+                'rgb(236, 67, 219)', // income
+                'rgb(132, 37, 145)', // expenses
+                'rgb(247, 247, 247)'  // balance
             ],
             hoverOffset: 4
         }]

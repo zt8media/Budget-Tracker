@@ -1,6 +1,4 @@
-$background-black: #000;
-$background-red: #f00;
-$background-blue: #00f;
+$primarycolor:linear-gradient(to top right, #e9eaeb, #671d62);
 $border-radius: 50px;
 $padding: 20px;
 $table-border: none;
@@ -14,9 +12,9 @@ $error-color: #f00;
 $font-family: 'Oswald', sans-serif;
 $table-line-color: rgba(211, 211, 211, 0.3); // Light grey color for table lines
 
-$income-color: rgb(66, 245, 87); // Green
-$expense-color: rgb(247, 67, 67); // Red
-$balance-color: rgb(247, 241, 67); // Yellow
+$income-color: rgb(236, 67, 219); // income
+$expense-color: rgb(132, 37, 145); // Expense
+$balance-color: rgb(247, 247, 247); // balance
 
 @mixin center {
   display: flex;
@@ -26,7 +24,7 @@ $balance-color: rgb(247, 241, 67); // Yellow
 
 body {
   font-family: $font-family;
-  background-color: $background-black;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +35,7 @@ body {
   overflow-y: hidden;
 
   .main-content {
-    background: linear-gradient(to top right, #a0a4b9, #eba243);
+    background: $primarycolor;
     backdrop-filter: blur(10px);
     border-radius: $border-radius - 15;
     padding: $padding;
@@ -92,7 +90,7 @@ body {
         .income, .balance, .expenses {
           font-size: 1.5em;
           margin: 10px 0;
-          color: $background-black;
+         
         }
 
         .balance {
@@ -158,7 +156,7 @@ body {
           gap: 10px;
 
           select, input, button {
-            padding: 5px;
+            padding: 15px;
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: 0.875rem;
@@ -166,7 +164,7 @@ body {
 
           #submit-transaction {
             background-color: $button-bg;
-            color: $background-black;
+    
             cursor: pointer;
 
             &:hover {
@@ -176,7 +174,7 @@ body {
 
           #clear-table {
             background-color: $income-color;
-            color: $background-black;
+          
             cursor: pointer;
 
             &:hover {
@@ -186,7 +184,7 @@ body {
 
           .error-message {
             color: $error-color;
-            font-size: 0.875rem;
+            font-size: 0.975rem;
             visibility: hidden;
           }
         }
@@ -234,16 +232,16 @@ body {
               padding: 10px;
               border: none;
               background: transparent;
-              color: $background-black;
+          
               text-align: center;
             }
 
             th {
-              color: $background-black;
+      
               position: sticky;
               top: 0;
               z-index: 1;
-              background-color: $background-white;
+              
               border-bottom: 1px solid $table-line-color;
             }
 
